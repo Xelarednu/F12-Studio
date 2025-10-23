@@ -1,0 +1,130 @@
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Font+Name&display=swap');
+@import 'photoswipe/style.css';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 2rem; /* 32px */
+    font-weight: 700;    /* Bold */
+    margin-bottom: 1em; 
+}
+
+h2 {
+    font-size: 1.5rem;   /* 24px */
+    margin-bottom: 0.75em;
+}
+
+h3 {
+    font-size: 1.1875rem; /* 19px */
+    font-weight: 600;     /* Semi-bold */
+    margin-bottom: 0.5em;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+  }
+
+.fill-button {
+    position: relative;
+    overflow: hidden;
+}
+    
+.fill-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #FFB85F;
+    transition: width 0.3s ease;
+    z-index: 0;
+}
+    
+.fill-button:hover::before {
+    width: 100%;
+}
+
+.vertical-line {
+    width: 0.3rem;
+    height: 15rem;
+    background-color: gray;
+    margin: 3rem;
+}
+
+.horizontal-line {
+    height: 0.3rem;
+    width: 70rem;
+    background-color: #ff4444;
+    margin-right: 5rem;
+    align-self: center;
+}
+
+.photos-h2 {
+    margin-bottom: 0;
+}
+
+/* Error message styles */
+.error-popup {
+    position: fixed;
+    top: 3%;
+    right: 45%;
+    padding: 15px;
+    background: #ff4444;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s forwards;
+}
+/* Error message styles */
+
+/* Success message styles */
+.success-popup {
+    position: fixed;
+    top: 3%;
+    right: 45%;
+    padding: 15px;
+    background: #41ca18;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s forwards;
+}
+/* Success message styles */
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+@source "../views";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
