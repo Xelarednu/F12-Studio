@@ -5,7 +5,7 @@
     @error('access_code')
         <div class="error-popup">{{ $message }}</div>
     @enderror
-    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
             <img class="w-12 h-12 mr-6" src="{{ asset ("images/F12 Logo 2.svg") }}" alt="logo">
             F12 Studio
