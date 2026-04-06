@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Example_photo;
 use Illuminate\Http\Request;
 
-class PhotoExamplesController extends Controller {
+class ExamplesController extends Controller {
     public function index() {
         $photos = Example_photo::all()->map(function ($photo) {
             $imagePath = public_path("images/examplePhotos/" . $photo->file_name);
@@ -17,7 +17,7 @@ class PhotoExamplesController extends Controller {
             ];
           });
 
-        return view("photoExamples.index", compact("photos"));
+        return view("examples.index", compact("photos"));
     }
 
     public function edit() {
@@ -33,7 +33,7 @@ class PhotoExamplesController extends Controller {
             ];
           });
 
-      return view("photoExamples.edit", compact("photos"));
+      return view("examples.edit", compact("photos"));
     }
 
     public function upload(Request $request) {

@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PhotoExamplesController;
+use App\Http\Controllers\ExamplesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SamplesController;
 use App\Http\Controllers\ServicesController;
@@ -55,9 +55,9 @@ Route::middleware(["adminAuth"])->group(function() {
     Route::post("/client/edit/{client}", [ClientsController::class, "modify"]);
     Route::get("/client/view/{clientData}", [ClientsController::class, "view"]);
 
-    Route::get("/examples", [PhotoExamplesController::class, "edit"]);
-    Route::post("/examples/upload", [PhotoExamplesController::class, "upload"]);
-    Route::get("/examples/delete/{photo}", [PhotoExamplesController::class, "remove"]);
+    Route::get("/examples", [ExamplesController::class, "edit"]);
+    Route::post("/examples/upload", [ExamplesController::class, "upload"]);
+    Route::get("/examples/delete/{photo}", [ExamplesController::class, "remove"]);
 
     Route::get("/chosen_photos", [GalleryController::class, "show"]);
     Route::get("/client/addPhoto/{client}", [GalleryController::class, "add"]);
@@ -82,8 +82,9 @@ Route::post("/samples/1", [SamplesController::class, "updateFirst"])->middleware
 Route::post("/samples/2", [SamplesController::class, "updateSecond"])->middleware(EnsureAdminAuth::class);
 Route::post("/samples/3", [SamplesController::class, "updateThird"])->middleware(EnsureAdminAuth::class);
 
+Route::post("/samples/editor", [SamplesController::class, "saveEditorData"])->middleware(EnsureAdminAuth::class);
 
-Route::get("/photoExamples", [photoExamplesController::class, "index"]);
+Route::get("/examples", [ExamplesController::class, "index"]);
 
 Route::get("/gallery", [GalleryController::class, "index"])->middleware(EnsureClientAuth::class);
 Route::post("/gallery", [GalleryController::class, "store"])->middleware(EnsureClientAuth::class);

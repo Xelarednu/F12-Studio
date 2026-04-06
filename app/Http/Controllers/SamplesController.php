@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sample_option;
 use App\Models\Sample_photo;
+use App\Models\Samples;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,8 +32,10 @@ class SamplesController extends Controller
         $secondVariantContent = $secondVariantData;
         $thirdVariantContent = $thirdVariantData;
 
+        $editorText = Samples::all();
+
         if (session("admin_auth") == true) {
-            return view("samples.adminIndex", compact("firstVariantContent", "secondVariantContent", "thirdVariantContent", "photos"));
+            return view("samples.adminIndex", compact("firstVariantContent", "secondVariantContent", "thirdVariantContent", "photos", "editorText"));
         }
 
         return view("samples.clientIndex", compact("firstVariantContent", "secondVariantContent", "thirdVariantContent", "photos"));
@@ -127,6 +130,16 @@ class SamplesController extends Controller
 
         Storage::put('thirdVariant.json', json_encode($data, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
         
+        return redirect()->back();
+    }
+
+    public function saveEditorData(Request $request) {
+        $data = $request->editorData;
+        $textData = new Samples;
+        $textData->textData = $data;
+
+        $textData->save();
+
         return redirect()->back();
     }
 

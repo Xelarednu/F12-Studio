@@ -22,7 +22,7 @@
             </div>
 
             <nav class="flex items-center space-x-4 pt-[2rem] xl:pt-0">
-                <a href="/photoExamples" class="text-xl font-semibold">Примеры</a>
+                <a href="/examples" class="text-xl font-semibold">Примеры</a>
                 <a href="/samples" class="text-xl font-semibold">Образцы</a>
                 <a href="{{ route('client.login') }}" class="lg:pr-24 mr-0 text-xl font-semibold max-w-[122px] lg:max-w-full sm:whitespace-nowrap">Выбор фотографий</a>
                 @if (session("admin_auth") == true)
