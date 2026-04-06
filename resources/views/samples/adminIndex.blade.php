@@ -1,36 +1,9 @@
 @extends("CKEditorHead")
 
 @section("content")
-    <div class="min-h-screen bg-gray-800 text-white flex flex-col items-center py-10 px-4">
-        <div class="main-container">
-            <div id="editor">
-                <p>Hello from CKEditor 5!</p>
-            </div>
-        </div>
-        <script>
-            const {
-                ClassicEditor,
-                Essentials,
-                Bold,
-                Italic,
-                Font,
-                Paragraph
-            } = CKEDITOR;
-
-            document.addEventListener('DOMContentLoaded', () => {
-                ClassicEditor
-                    .create(document.querySelector('#editor'), {
-                        licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE4MDY2MjM5OTksImp0aSI6Ijg3OGFlNTVjLTAyYzgtNDYwNC05NTJkLTg0OGQ1ZGZhMTEwYSIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiXSwiZmVhdHVyZXMiOlsiRFJVUCIsIkUyUCIsIkUyVyJdLCJyZW1vdmVGZWF0dXJlcyI6WyJQQiIsIlJGIiwiU0NIIiwiVENQIiwiVEwiLCJUQ1IiLCJJUiIsIlNVQSIsIkI2NEEiLCJMUCIsIkhFIiwiUkVEIiwiUEZPIiwiV0MiLCJGQVIiLCJCS00iLCJGUEgiLCJNUkUiXSwidmMiOiIzYTNkNGI4ZiJ9.SDCO1bD2DULcEho1d2n_cEYi2qExCCqL5kYt9rS8WZKND8TA888wl1MlJmSgFeHzD2FsuP3I1MeMp43DG4pjCQ',
-                        plugins: [Essentials, Bold, Italic, Font, Paragraph],
-                        toolbar: ['undo', 'redo', '|', 'bold', 'italic', '|',
-					'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor']
-                    })
-                    .then(editor => console.log('OK', editor))
-                    .catch(err => console.error(err));
-            });
-        </script>
-
-        <div
+<div class="min-h-screen bg-gray-800 text-white flex flex-col items-center py-10 px-4">
+    <div class="main-container">
+        <div>
             class="temporary-contact-info flex items-center flex-col sm:flex-row justify-center p-5 max-w-3xl w-full bg-gray-700 rounded-lg mb-8 text-center ">
             <p class="m-2">+372 5066892</p>
             <p class="m-2">Фотограф Сергей Дроздик</p>
@@ -69,7 +42,7 @@
                 <p class="mb-2">Фото-книга содержит:</p>
                 <ul class="list-disc list-inside mb-6 text-left max-w-md mx-auto">
                     @foreach ($firstVariantContent->insideAlbum as $index => $inside)
-                        <li contenteditable="true" id="albumInsides_{{ $index }}">{{ $inside }}</li>
+                    <li contenteditable="true" id="albumInsides_{{ $index }}">{{ $inside }}</li>
                     @endforeach
                     <input type="hidden" id="hiddenAlbumInsides" name="albumInsides" />
                 </ul>
@@ -77,7 +50,7 @@
                 <p class="font-bold mb-2">В стомость фотокниги входит:</p>
                 <ul class="list-disc list-inside mb-6 text-left max-w-md mx-auto">
                     @foreach ($firstVariantContent->priceIncludes as $index => $price)
-                        <li contenteditable="true" id="priceIncludes_{{ $index }}">{{ $price }}</li>
+                    <li contenteditable="true" id="priceIncludes_{{ $index }}">{{ $price }}</li>
                     @endforeach
                     <input type="hidden" id="hiddenPriceIncludes" name="priceIncludes" />
                 </ul>
@@ -90,11 +63,11 @@
 
                 <div class="pswp-gallery" id="gallery">
                     @foreach ($photos as $photo)
-                        @if ($photo["option_id"] == 1)
-                            <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
-                                data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
-                                    src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
-                        @endif
+                    @if ($photo["option_id"] == 1)
+                    <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
+                        data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
+                            src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
+                    @endif
                     @endforeach
                 </div>
 
@@ -120,7 +93,7 @@
                 <p class="font-bold mb-2">В стомость фотокниги входит:</p>
                 <ul class="list-disc list-inside mb-6 text-left max-w-md mx-auto">
                     @foreach ($secondVariantContent->priceIncludes as $index => $price)
-                        <li contenteditable="true" id="priceIncludes_2{{ $index }}">{{ $price }}</li>
+                    <li contenteditable="true" id="priceIncludes_2{{ $index }}">{{ $price }}</li>
                     @endforeach
                     <input type="hidden" id="hiddenPriceIncludes2" name="priceIncludes2" />
                 </ul>
@@ -133,11 +106,11 @@
 
                 <div class="pswp-gallery" id="gallery">
                     @foreach ($photos as $photo)
-                        @if ($photo["option_id"] == 2)
-                            <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
-                                data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
-                                    src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
-                        @endif
+                    @if ($photo["option_id"] == 2)
+                    <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
+                        data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
+                            src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
+                    @endif
                     @endforeach
                 </div>
 
@@ -172,7 +145,7 @@
                 <p class="font-bold mb-2">В стомость фотокниги входит:</p>
                 <ul class="list-disc list-inside mb-6 text-left max-w-md mx-auto">
                     @foreach ($thirdVariantContent->priceIncludes as $index => $price)
-                        <li contenteditable="true" id="priceIncludes_3{{ $index }}">{{ $price }}</li>
+                    <li contenteditable="true" id="priceIncludes_3{{ $index }}">{{ $price }}</li>
                     @endforeach
                     <input type="hidden" id="hiddenPriceIncludes3" name="priceIncludes3" />
                 </ul>
@@ -185,11 +158,11 @@
 
                 <div class="pswp-gallery" id="gallery">
                     @foreach ($photos as $photo)
-                        @if ($photo["option_id"] == 3)
-                            <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
-                                data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
-                                    src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
-                        @endif
+                    @if ($photo["option_id"] == 3)
+                    <a href="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}"
+                        data-pswp-width="{{ $photo['width'] }}" data-pswp-height="{{ $photo['height'] }}" class="pb-5"><img
+                            src="{{ asset("images/samplePhotos/" . $photo["file_name"]) }}" alt="" class="pb-5"></a>
+                    @endif
                     @endforeach
                 </div>
 
@@ -201,7 +174,7 @@
     </div>
 
     <script>
-        document.getElementById('firstForm').addEventListener('submit', function (e) {
+        document.getElementById('firstForm').addEventListener('submit', function(e) {
             const title = document.getElementById('title').innerText;
             document.getElementById('hiddenTitle').value = title;
 
@@ -214,7 +187,11 @@
             // Album insides
             let albumInsidesArr = [];
 
-            for (let i = 0; i < {{ count((array) $firstVariantContent->insideAlbum) }}; i++) {
+            for (let i = 0; i < {
+                    {
+                        count((array) $firstVariantContent - > insideAlbum)
+                    }
+                }; i++) {
                 const insideAlbumContent = document.getElementById('albumInsides_' + i);
                 albumInsidesArr.push(insideAlbumContent.innerText);
             }
@@ -225,7 +202,11 @@
             // Price includes
             let priceIncludesArr = [];
 
-            for (let i = 0; i < {{ count((array) $firstVariantContent->priceIncludes) }}; i++) {
+            for (let i = 0; i < {
+                    {
+                        count((array) $firstVariantContent - > priceIncludes)
+                    }
+                }; i++) {
                 const priceIncludesContent = document.getElementById('priceIncludes_' + i);
                 priceIncludesArr.push(priceIncludesContent.innerText);
             }
@@ -242,7 +223,7 @@
     </script>
 
     <script>
-        document.getElementById('secondForm').addEventListener('submit', function (e) {
+        document.getElementById('secondForm').addEventListener('submit', function(e) {
             const title = document.getElementById('title2').innerText;
             document.getElementById('hiddenTitle2').value = title;
 
@@ -264,7 +245,11 @@
             // Price includes
             let priceIncludesArr = [];
 
-            for (let i = 0; i < {{ count((array) $secondVariantContent->priceIncludes) }}; i++) {
+            for (let i = 0; i < {
+                    {
+                        count((array) $secondVariantContent - > priceIncludes)
+                    }
+                }; i++) {
                 const priceIncludesContent = document.getElementById('priceIncludes_2' + i);
                 priceIncludesArr.push(priceIncludesContent.innerText);
             }
@@ -281,7 +266,7 @@
     </script>
 
     <script>
-        document.getElementById('thirdForm').addEventListener('submit', function (e) {
+        document.getElementById('thirdForm').addEventListener('submit', function(e) {
             const title = document.getElementById('title3').innerText;
             document.getElementById('hiddenTitle3').value = title;
 
@@ -303,7 +288,11 @@
             // Price includes
             let priceIncludesArr = [];
 
-            for (let i = 0; i < {{ count((array) $thirdVariantContent->priceIncludes) }}; i++) {
+            for (let i = 0; i < {
+                    {
+                        count((array) $thirdVariantContent - > priceIncludes)
+                    }
+                }; i++) {
                 const priceIncludesContent = document.getElementById('priceIncludes_3' + i);
                 priceIncludesArr.push(priceIncludesContent.innerText);
             }
@@ -318,4 +307,4 @@
             document.getElementById('hiddenAlbumExample3').value = albumExample;
         });
     </script>
-@endsection
+    @endsection
