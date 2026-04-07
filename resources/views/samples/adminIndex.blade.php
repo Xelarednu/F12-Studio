@@ -1,10 +1,9 @@
-@extends("CKEditorHead")
+@extends("head")
 
 @section("content")
 <div class="min-h-screen bg-gray-800 text-white flex flex-col items-center py-10 px-4">
     <div class="main-container">
-        <div>
-            class="temporary-contact-info flex items-center flex-col sm:flex-row justify-center p-5 max-w-3xl w-full bg-gray-700 rounded-lg mb-8 text-center ">
+        <div class="temporary-contact-info flex items-center flex-col sm:flex-row justify-center p-5 max-w-3xl w-full bg-gray-700 rounded-lg mb-8 text-center">
             <p class="m-2">+372 5066892</p>
             <p class="m-2">Фотограф Сергей Дроздик</p>
             <p class="m-2">foto.f12studio@gmail.com</p>
